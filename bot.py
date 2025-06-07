@@ -18,9 +18,18 @@ if not TELEGRAM_TOKEN:
 
 # Initialize Google Sheets client
 if GOOGLE_CREDENTIALS_JSON and SPREADSHEET_KEY:
-    gc = gspread.service_account(filename=GOOGLE_CREDENTIALS_JSON)
-    sh = gc.open_by_key(SPREADSHEET_KEY)
-    worksheet = sh.worksheet('Transactions')
+    try:
+        gc = gspread.service_account(filename=GOOGLE_CREDENTIALS_JSON)
+    except Exception as e:
+        raise RuntimeError(f'Failed to load Google credentials: {e}')
+
+    try:
+        sh = gc.open_by_key(SPREADSHEET_KEY)
+        worksheet = sh.worksheet('Transactions')
+    except gspread.exceptions.WorksheetNotFound:
+        raise RuntimeError("'Transactions' worksheet not found in the spreadsheet")
+    except Exception as e:
+        raise RuntimeError(f'Failed to access spreadsheet: {e}')
 else:
     worksheet = None
     print('Google Sheets credentials are missing; transactions will not be saved')
