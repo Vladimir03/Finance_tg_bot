@@ -11,7 +11,9 @@ This repository contains a simple Telegram bot that records your incomes and exp
    - `TELEGRAM_TOKEN` – token received from BotFather.
 3. Install dependencies with `pip install -r requirements.txt`.
 4. **Run the bot** using `python bot.py`.
-5. Use the `/help` command to see available actions. Commands `/add_income` and
-   `/add_expense` accept an amount and description to log transactions.
+5. Use `/start` to show buttons for adding income, adding expense, or viewing
+   the monthly summary. You can also use the `/help` command to see available
+   commands. The `/add_income` and `/add_expense` commands accept an amount and
+   description, while `/summary` displays totals for the current month.
 
-Transactions are appended to `transactions.csv` in the repository root.
+Transactions are saved to `transactions.csv` in the repository root.
