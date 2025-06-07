@@ -5,7 +5,7 @@ import gspread
 from datetime import datetime
 
 # Load tokens from environment variables
-TELEGRAM_TOKEN = os.environ.get('7868259311:AAE2xQjwbeOKUXfqyId_IK6kNZgR0gQ8_OA')
+TELEGRAM_TOKEN = os.environ.get(7868259311:AAE2xQjwbeOKUXfqyId_IK6kNZgR0gQ8_OA)
 GOOGLE_CREDENTIALS_JSON = os.environ.get('GOOGLE_CREDENTIALS_JSON')
 SPREADSHEET_KEY = os.environ.get('SPREADSHEET_KEY')
 
