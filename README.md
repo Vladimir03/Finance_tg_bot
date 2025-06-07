@@ -9,7 +9,9 @@ This repository contains a simple Telegram bot that records your incomes and exp
    - Create a Google Cloud project and enable the Google Sheets API.
    - Create a service account and download the JSON credentials file.
    - Share the target spreadsheet with the service account email.
-3. **Configure environment variables** for the bot:
+3. **Configure environment variables** for the bot. You can copy `.env.example`
+   to `.env` and fill in your values. The bot will automatically load this file
+   on startup:
    - `TELEGRAM_TOKEN` – token received from BotFather.
    - `GOOGLE_CREDENTIALS_JSON` – path to the service account JSON file.
    - `SPREADSHEET_KEY` – ID of the Google spreadsheet (the part between

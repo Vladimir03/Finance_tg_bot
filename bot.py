@@ -1,8 +1,12 @@
 import os
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import gspread
 from datetime import datetime
+
+# Load environment variables from a .env file if present
+load_dotenv()
 
 # Load tokens from environment variables
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
