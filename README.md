@@ -12,8 +12,11 @@ This repository contains a simple Telegram bot that records your incomes and exp
 3. **Configure environment variables** for the bot:
    - `TELEGRAM_TOKEN` – token received from BotFather.
    - `GOOGLE_CREDENTIALS_JSON` – path to the service account JSON file.
-   - `SPREADSHEET_KEY` – ID of the Google spreadsheet.
-4. **Run the bot** using `python bot.py`.
-5. Use commands `/add_income` and `/add_expense` followed by amount and description to log transactions.
+   - `SPREADSHEET_KEY` – ID of the Google spreadsheet (the part between
+     `/d/` and `/edit` in the spreadsheet URL).
+4. Install dependencies with `pip install -r requirements.txt`.
+5. **Run the bot** using `python bot.py`.
+6. Use the `/help` command to see available actions. Commands `/add_income` and
+   `/add_expense` accept an amount and description to log transactions.
 
 Transactions are appended to the `Transactions` sheet in the specified spreadsheet.
