@@ -9,11 +9,16 @@ This repository contains a simple Telegram bot that records your incomes and exp
    - Create a Google Cloud project and enable the Google Sheets API.
    - Create a service account and download the JSON credentials file.
    - Share the target spreadsheet with the service account email.
-3. **Configure environment variables** for the bot:
+3. **Configure environment variables** for the bot. You can copy `.env.example`
+   to `.env` and fill in your values. The bot will automatically load this file
+   on startup:
    - `TELEGRAM_TOKEN` – token received from BotFather.
    - `GOOGLE_CREDENTIALS_JSON` – path to the service account JSON file.
-   - `SPREADSHEET_KEY` – ID of the Google spreadsheet.
-4. **Run the bot** using `python bot.py`.
-5. Use commands `/add_income` and `/add_expense` followed by amount and description to log transactions.
+   - `SPREADSHEET_KEY` – ID of the Google spreadsheet (the part between
+     `/d/` and `/edit` in the spreadsheet URL).
+4. Install dependencies with `pip install -r requirements.txt`.
+5. **Run the bot** using `python bot.py`.
+6. Use the `/help` command to see available actions. Commands `/add_income` and
+   `/add_expense` accept an amount and description to log transactions.
 
 Transactions are appended to the `Transactions` sheet in the specified spreadsheet.
