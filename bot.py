@@ -10,29 +10,29 @@ load_dotenv()
 
 # Load tokens from environment variables
 TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
-GOOGLE_CREDENTIALS_JSON = os.environ.get('GOOGLE_CREDENTIALS_JSON')
-SPREADSHEET_KEY = os.environ.get('SPREADSHEET_KEY')
+# GOOGLE_CREDENTIALS_JSON = os.environ.get('GOOGLE_CREDENTIALS_JSON')
+# SPREADSHEET_KEY = os.environ.get('SPREADSHEET_KEY')
 
 if not TELEGRAM_TOKEN:
     raise RuntimeError('TELEGRAM_TOKEN environment variable is required')
 
 # Initialize Google Sheets client
-if GOOGLE_CREDENTIALS_JSON and SPREADSHEET_KEY:
-    try:
-        gc = gspread.service_account(filename=GOOGLE_CREDENTIALS_JSON)
-    except Exception as e:
-        raise RuntimeError(f'Failed to load Google credentials: {e}')
+# if GOOGLE_CREDENTIALS_JSON and SPREADSHEET_KEY:
+  #  try:
+   #     gc = gspread.service_account(filename=GOOGLE_CREDENTIALS_JSON)
+    #except Exception as e:
+     #   raise RuntimeError(f'Failed to load Google credentials: {e}')
 
-    try:
-        sh = gc.open_by_key(SPREADSHEET_KEY)
-        worksheet = sh.worksheet('Transactions')
-    except gspread.exceptions.WorksheetNotFound:
-        raise RuntimeError("'Transactions' worksheet not found in the spreadsheet")
-    except Exception as e:
-        raise RuntimeError(f'Failed to access spreadsheet: {e}')
-else:
-    worksheet = None
-    print('Google Sheets credentials are missing; transactions will not be saved')
+    #try:
+     #   sh = gc.open_by_key(SPREADSHEET_KEY)
+      #  worksheet = sh.worksheet('Transactions')
+    #except gspread.exceptions.WorksheetNotFound:
+     #   raise RuntimeError("'Transactions' worksheet not found in the spreadsheet")
+    #except Exception as e:
+     #   raise RuntimeError(f'Failed to access spreadsheet: {e}')
+#else:
+ #   worksheet = None
+  #  print('Google Sheets credentials are missing; transactions will not be saved')
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -63,10 +63,10 @@ async def add_expense(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Expense recorded.')
 
 
-def _log_transaction(tx_type: str, amount: str, description: str):
-    if worksheet:
-        timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-        worksheet.append_row([timestamp, tx_type, amount, description])
+#def _log_transaction(tx_type: str, amount: str, description: str):
+ #   if worksheet:
+  #      timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+   #     worksheet.append_row([timestamp, tx_type, amount, description])
 
 
 def main():
